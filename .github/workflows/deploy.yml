@@ -1,0 +1,60 @@
+name: Deploy Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+    
+      - name: Run Lint
+        run: npm run lint
+
+      #- name: Run Tests
+      #  run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: docker build -t free-market-web-ui:latest .
+
+      - name: Log in to Heroku Container Registry
+        run: |
+          echo "${{ secrets.HEROKU_API_KEY }}" | docker login --username="${{ secrets.HEROKU_USERNAME }}" --password-stdin registry.heroku.com
+
+      - name: Tag and push Docker image to Heroku
+        run: |
+          docker tag free-market-web-ui:latest registry.heroku.com/free-market-web-ui/web
+          docker push registry.heroku.com/free-market-web-ui/web
+
+      - name: Release the Heroku app
+        run: |
+          heroku container:release web --app free-market-web-ui
+          
