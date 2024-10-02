@@ -5,13 +5,14 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "biome": "tsc --noEmit && biome format --write"
+        "lint": "tsc --noEmit && biome format --write"
     },
     "dependencies": {
         "next": "14.2.13",
         "react": "^18",
         "react-dom": "^18",
-        "react-hook-form": "^7.53.0"
+        "react-hook-form": "^7.53.0",
+        "sharp": "^0.33.5"
     },
     "devDependencies": {
         "@biomejs/biome": "1.9.2",

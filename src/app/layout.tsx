@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import '@free-market-web-ui/app/globals.css';
+import Spinner from '@free-market-web-ui/components/Spinner';
 
 const proximaNovaFont = localFont({
     src: [
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
     <html lang="en">
-        <body className={`${proximaNovaFont.variable} antialiased`}>{children}</body>
+        <body className={`${proximaNovaFont.variable} antialiased`}>
+            <Suspense fallback={<Spinner />}>{children}</Suspense>
+        </body>
     </html>
 );
 
