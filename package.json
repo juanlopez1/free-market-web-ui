@@ -5,10 +5,12 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "tsc --noEmit && biome format --write"
+        "lint": "tsc --noEmit && biome format --write",
+        "postbuild": "next-sitemap"
     },
     "dependencies": {
         "next": "14.2.13",
+        "next-sitemap": "^4.2.3",
         "react": "^18",
         "react-dom": "^18",
         "react-hook-form": "^7.53.0",

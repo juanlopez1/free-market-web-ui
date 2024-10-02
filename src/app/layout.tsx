@@ -29,6 +29,16 @@ const proximaNovaFont = localFont({
 export const metadata: Metadata = {
     title: 'Free Market Web UI',
     description: 'Code challenge for Mercado Libre',
+    keywords: ['react', 'nextjs', 'mercado libre', 'server components'],
+    openGraph: {
+        title: 'Free Market Web UI',
+        description: 'Empezá a buscar ahora y encontrá tu producto en instantes',
+        url: process.env.SITE_URL,
+    },
+    twitter: {
+        title: 'Free Market Web UI',
+        description: 'Empezá a buscar ahora y encontrá tu producto en instantes',
+    },
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
