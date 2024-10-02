@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #eee;
+    --black: #333;
+    --yellow: #ffe600;
+    --sky-blue: #3483fa;
+    --gray: #999;
+    --granite: #666;
+}
+
+body {
+    background: var(--background);
+    color: var(--black);
+    font-family: var(--font-proxima-nova);
+}
+
+@layer components {
+    header {
+        @apply w-full;
+        @apply py-5;
+        @apply px-80;
+        @apply bg-[--yellow];
+    }
+
+    main {
+        @apply py-4;
+        @apply px-80;
+    }
+
+    .search-bar {
+        @apply flex;
+        @apply flex-row;
+        @apply w-full;
+        @apply items-center;
+    }
+
+    .search-input-container {
+        @apply flex;
+        @apply w-full;
+        @apply ml-8;
+    }
+
+    .search-input {
+        @apply w-full;
+        @apply px-4;
+        @apply py-2;
+        @apply rounded-l-sm;
+        @apply focus:outline-none;
+        @apply focus:ring-1;
+        @apply focus:ring-[--black];
+        @apply text-lg;
+    }
+
+    .search-button {
+        @apply px-4;
+        @apply py-2;
+        @apply bg-[--background];
+        @apply rounded-r-sm;
+        @apply hover:bg-[--gray];
+        @apply focus:outline-none;
+        @apply focus:ring-1;
+        @apply focus:ring-[--black];
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
