@@ -14,7 +14,13 @@ type ProductListItemProps = {
 const ProductListItem: FC<ProductListItemProps> = ({ product, showDivider }) => (
     <div>
         <Link className="flex flex-row hover:bg-[--background] rounded-sm p-2" href={`/items/${product.id}`}>
-            <Image src={product.picture} alt="img" height={180} width={180} className="rounded-sm" />
+            <Image
+                src={product.picture}
+                alt="img"
+                height={180}
+                width={180}
+                className="h-[180px] w-[180px] rounded-sm object-contain"
+            />
             <div className="grid grid-cols-8 justify-between w-full p-4">
                 <div className="col-span-6">
                     <div className="flex flex-row items-center mb-8">
@@ -22,7 +28,13 @@ const ProductListItem: FC<ProductListItemProps> = ({ product, showDivider }) => 
                             {formatPriceString(product.price.amount, product.price.currency)}
                         </div>
                         {product.free_shipping && (
-                            <Image src={shippingIcon} alt="shipping-icon" width={18} height={18} className="ml-3" />
+                            <Image
+                                src={shippingIcon}
+                                alt="shipping-icon"
+                                width={18}
+                                height={18}
+                                className="h-[18px] w-[18px] ml-3"
+                            />
                         )}
                     </div>
                     <div className="text-lg">{product.title}</div>

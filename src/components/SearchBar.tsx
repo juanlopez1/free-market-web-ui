@@ -32,7 +32,7 @@ const SearchBar = () => {
 
     return (
         <div className="search-bar">
-            <Image src={mlLogo} alt="ml-logo" width={53} height={36} />
+            <Image src={mlLogo} alt="ml-logo" width={53} height={36} className="h-9 w-[53px]" />
             <form className="search-input-container" onSubmit={handleSubmit(onSubmit)}>
                 <Controller
                     name="query"
@@ -51,7 +51,13 @@ const SearchBar = () => {
                                 value={value}
                             />
                             <button className="search-button" type="submit" disabled={isSubmitting}>
-                                <Image src={searchIcon} alt="search-icon" width={18} height={18} />
+                                <Image
+                                    src={searchIcon}
+                                    alt="search-icon"
+                                    width={18}
+                                    height={18}
+                                    className="h-[18px] w-[18px]"
+                                />
                             </button>
                         </Fragment>
                     )}
