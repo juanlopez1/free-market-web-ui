@@ -34,7 +34,9 @@ const Product: FC = () => {
                             <div className="text-[46px]">
                                 {formatPriceString(product.price.amount, product.price.currency)}
                             </div>
-                            <div className="text-2xl relative top-3">{product.price.decimals}</div>
+                            <div className="text-2xl relative top-3">
+                                {product.price.decimals.toString().padStart(2, '0')}
+                            </div>
                         </div>
                         <button
                             type="button"
