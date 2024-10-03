@@ -1,15 +1,21 @@
 import { Fragment, type FC } from 'react';
 import Image from 'next/image';
 
+import ErrorMessage from '@free-market-web-ui/components/ErrorMessage';
 import Spinner from '@free-market-web-ui/components/Spinner';
+import useProduct from '@free-market-web-ui/context/product.context';
 import formatPriceString from '@free-market-web-ui/utils/formatPriceString';
 import getConditionString from '@free-market-web-ui/utils/getConditionString';
-import useProduct from '@free-market-web-ui/context/product.context';
 
 const Product: FC = () => {
-    const { fetching, product } = useProduct();
+    const { error, fetching, product, productId, retryGetProduct } = useProduct();
     return fetching ? (
         <Spinner />
+    ) : error ? (
+        <ErrorMessage
+            message={`El producto solicitado (${productId}) no se encuentra disponible, reintentá o probá con otro producto`}
+            onRetry={retryGetProduct}
+        />
     ) : (
         <Fragment>
             {product && (

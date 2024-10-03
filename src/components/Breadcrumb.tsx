@@ -4,9 +4,10 @@ import ChevronRight from '@free-market-web-ui/icons/ChevronRight';
 import useProduct from '@free-market-web-ui/context/product.context';
 
 const Breadcrumb = () => {
-    const { categories, fetching } = useProduct();
+    const { categories, error, fetching } = useProduct();
     return (
         !fetching &&
+        !error &&
         categories && (
             <nav className="breadcrumb">
                 <ol>

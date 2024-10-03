@@ -18,7 +18,10 @@ export interface ProductState {
     error: boolean;
     fetching: boolean;
     product?: ProductType;
+    productId?: string;
     searchProducts?: SearchProductType[];
+    retryGetProduct: () => void;
+    retrySearchProducts: () => void;
 }
 
 const ProductContext = createContext<ProductState | undefined>(undefined);
@@ -45,9 +48,8 @@ export const ProductProvider: FC<ProductProviderProps> = ({ children, id }) => {
             const response = await productAPI.getById({ id });
             setProduct(response.item);
             setCategories(response.categories);
-        } catch (error) {
+        } catch (_) {
             setError(true);
-            console.log('ERROR', error);
         } finally {
             setFetching(false);
         }
@@ -64,13 +66,20 @@ export const ProductProvider: FC<ProductProviderProps> = ({ children, id }) => {
             const response = await productAPI.searchByQuery({ query });
             setSearchProducts(response.items);
             setCategories(response.categories);
-        } catch (error) {
+        } catch (_) {
             setError(true);
-            console.log('ERROR', error);
         } finally {
             setFetching(false);
         }
     }, [query]);
+
+    const retryGetProduct = useCallback(() => {
+        getById();
+    }, [getById]);
+
+    const retrySearchProducts = useCallback(() => {
+        searchByQuery();
+    }, [searchByQuery]);
 
     useEffect(() => {
         if (query) {
@@ -90,9 +99,12 @@ export const ProductProvider: FC<ProductProviderProps> = ({ children, id }) => {
             error,
             fetching,
             product,
+            productId: id,
             searchProducts,
+            retryGetProduct,
+            retrySearchProducts,
         }),
-        [categories, error, fetching, product, searchProducts],
+        [categories, error, fetching, product, searchProducts, id, retrySearchProducts, retryGetProduct],
     );
     return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
 };
