@@ -25,25 +25,22 @@ body {
         @apply bg-[--yellow];
     }
 
-    main {
-        @apply py-4;
-        @apply px-80;
-    }
-
     .search-bar {
         @apply flex;
         @apply flex-row;
         @apply w-full;
         @apply items-center;
     }
-
-    .search-input-container {
+    .search-bar > img {
+        @apply h-9;
+        @apply w-[53px];
+    }
+    .search-bar > form {
         @apply flex;
         @apply w-full;
         @apply ml-8;
     }
-
-    .search-input {
+    .search-bar > form > input {
         @apply w-full;
         @apply px-4;
         @apply py-2;
@@ -53,8 +50,7 @@ body {
         @apply focus:ring-[--black];
         @apply text-lg;
     }
-
-    .search-button {
+    .search-bar > form > button {
         @apply px-4;
         @apply py-2;
         @apply bg-[--background];
@@ -63,6 +59,184 @@ body {
         @apply focus:outline-none;
         @apply focus:ring-1;
         @apply focus:ring-[--black];
+    }
+    .search-bar > form > button > img {
+        @apply h-[18px];
+        @apply w-[18px];
+    }
+
+    main {
+        @apply py-4;
+        @apply px-80;
+    }
+
+    .home-message {
+        @apply flex;
+        @apply flex-col;
+        @apply justify-center;
+        @apply items-center;
+        @apply mt-2;
+    }
+    .home-message > h1 {
+        @apply text-2xl;
+        @apply text-[--gray];
+    }
+
+    .breadcrumb {
+        @apply text-sm;
+        @apply text-[--gray];
+        @apply font-light;
+        @apply w-full;
+        @apply mb-4;
+    }
+    .breadcrumb > ol {
+        @apply flex;
+        @layer list-reset;
+    }
+    .breadcrumb > ol > .breadcrumb-last-path {
+        @apply font-semibold;
+    }
+    .breadcrumb > ol > .breadcrumb-divider-icon {
+        @apply flex;
+        @apply items-center;
+        @apply mx-1;
+    }
+
+    .products-list {
+        @apply grid;
+        @apply grid-rows-4;
+        @apply gap-2;
+        @apply rounded-sm;
+        @apply bg-white p-2;
+    }
+
+    .products-list-item {
+        @apply flex;
+        @apply flex-row;
+        @apply hover:bg-[--background];
+        @apply rounded-sm;
+        @apply p-2;
+    }
+    .products-list-item > img {
+        @apply h-[180px];
+        @apply w-[180px];
+        @apply rounded-sm;
+        @apply object-contain;
+    }
+    .products-list-item > .details {
+        @apply grid;
+        @apply grid-cols-8;
+        @apply justify-between;
+        @apply w-full;
+        @apply p-4;
+    }
+    .products-list-item > .details > div {
+        @apply col-span-6;
+    }
+    .products-list-item > .details > p {
+        @apply col-span-2;
+        @apply text-xs;
+        @apply text-[--granite];
+    }
+    .products-list-item > .details > div > .price {
+        @apply flex;
+        @apply flex-row;
+        @apply items-center;
+        @apply mb-8;
+    }
+    .products-list-item > .details > div > .price > p {
+        @apply text-2xl;
+    }
+    .products-list-item > .details > div > .price > img {
+        @apply h-[18px];
+        @apply w-[18px];
+        @apply ml-3;
+    }
+    .products-list-item > .details > div > h2 {
+        @apply text-lg;
+    }
+
+    .product {
+        @apply rounded-sm;
+        @apply bg-white;
+        @apply p-8;
+        @apply grid;
+        @apply grid-cols-10;
+    }
+    .product > .description {
+        @apply col-span-7;
+    }
+    .product > .description > img {
+        @apply max-h-[680px];
+        @apply w-[680px];
+        @apply object-contain;
+    }
+    .product > .description > h2 {
+        @apply text-[28px];
+        @apply my-8;
+    }
+    .product > .description > p {
+        @apply text-base;
+        @apply text-[--gray];
+        @apply font-light;
+    }
+    .product > .details {
+        @apply col-span-3;
+    }
+    .product > .details > p {
+        @apply text-sm;
+        @apply mb-4;
+        @apply font-light;
+    }
+    .product > .details > h1 {
+        @apply text-2xl;
+        @apply mb-8;
+        @apply font-semibold;
+    }
+    .product > .details > .price {
+        @apply flex;
+        @apply flex-row;
+        @apply mb-8;
+    }
+    .product > .details > .price > .amount {
+        @apply text-[46px];
+    }
+    .product > .details > .price > .decimals {
+        @apply text-2xl;
+        @apply relative;
+        @apply top-3;
+    }
+
+    .button-primary {
+        @apply bg-[--sky-blue];
+        @apply hover:bg-[#2968c8];
+        @apply active:bg-[#204e96];
+        @apply w-full;
+        @apply text-white;
+        @apply rounded-sm;
+        @apply py-2;
+        @apply text-lg;
+    }
+
+    .spinner {
+        @apply absolute;
+        @apply -translate-x-1/2;
+        @apply -translate-y-1/2;
+        @apply top-2/4;
+        @apply left-1/2;
+    }
+    .spinner > svg {
+        @apply inline;
+        @apply w-8;
+        @apply h-8;
+        @apply animate-spin;
+        @apply fill-white;
+        @apply text-[--gray];
+    }
+
+    hr {
+        @apply mt-2;
+        @apply h-[2px];
     }
 }
 

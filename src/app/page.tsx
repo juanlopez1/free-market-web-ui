@@ -7,13 +7,11 @@ const HomePage: FC = () => (
     <Fragment>
         <Header />
         <main>
-            <div className="flex flex-col justify-center items-center mt-2">
+            <div className="home-message">
                 <div className="animate-bounce">
                     <ArrowUp className="w-6 h-6" />
                 </div>
-                <div className="text-2xl text-[--gray]">
-                    ¡Empezá a buscar ahora y encontrá tu producto en instantes!
-                </div>
+                <h1>¡Empezá a buscar ahora y encontrá tu producto en instantes!</h1>
             </div>
         </main>
     </Fragment>

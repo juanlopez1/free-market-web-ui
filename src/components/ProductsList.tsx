@@ -7,7 +7,7 @@ const ProductsList = () => {
     return fetching ? (
         <Spinner />
     ) : (
-        <div className="grid grid-rows-4 gap-2 rounded-sm bg-white p-2">
+        <div className="products-list">
             {searchProducts?.map((product, index) => (
                 <ProductListItem key={product.id} product={product} showDivider={index + 1 < searchProducts.length} />
             ))}

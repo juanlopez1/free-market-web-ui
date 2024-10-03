@@ -8,17 +8,17 @@ const Breadcrumb = () => {
     return (
         !fetching &&
         categories && (
-            <nav className="text-sm text-[--gray] font-light w-full mb-4">
-                <ol className="flex list-reset">
+            <nav className="breadcrumb">
+                <ol>
                     {categories.map((cat, index) =>
                         index === categories.length - 1 ? (
-                            <li key={cat} className="font-semibold">
+                            <li key={cat} className="breadcrumb-last-path">
                                 {cat}
                             </li>
                         ) : (
                             <Fragment key={cat}>
                                 <li>{cat}</li>
-                                <li className="flex items-center mx-1">
+                                <li className="breadcrumb-divider-icon">
                                     <ChevronRight className="w-3 h-3" />
                                 </li>
                             </Fragment>
