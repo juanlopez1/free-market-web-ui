@@ -1,7 +1,8 @@
 import { type FC, Fragment } from 'react';
 
-import Header from '@free-market-web-ui/components/Header';
 import ArrowUp from '@free-market-web-ui/icons/ArrowUp';
+import Footer from '@free-market-web-ui/components/Footer';
+import Header from '@free-market-web-ui/components/Header';
 
 const HomePage: FC = () => (
     <Fragment>
@@ -14,6 +15,7 @@ const HomePage: FC = () => (
                 <h1>¡Empezá a buscar ahora y encontrá tu producto en instantes!</h1>
             </div>
         </main>
+        <Footer />
     </Fragment>
 );
 

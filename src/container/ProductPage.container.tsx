@@ -2,8 +2,9 @@
 import { Fragment, type FC } from 'react';
 
 import Breadcrumb from '@free-market-web-ui/components/Breadcrumb';
-import Product from '@free-market-web-ui/components/Product';
+import Footer from '@free-market-web-ui/components/Footer';
 import Header from '@free-market-web-ui/components/Header';
+import Product from '@free-market-web-ui/components/Product';
 import { ProductProvider } from '@free-market-web-ui/context/product.context';
 
 type ProductPageContainerProps = {
@@ -19,6 +20,7 @@ const ProductPageContainer: FC<ProductPageContainerProps> = ({ id }) => (
                 <Product />
             </ProductProvider>
         </main>
+        <Footer />
     </Fragment>
 );
 
