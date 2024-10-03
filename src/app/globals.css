@@ -20,8 +20,10 @@ body {
 @layer components {
     header {
         @apply w-full;
-        @apply py-5;
-        @apply px-80;
+        @apply py-3;
+        @apply lg:py-5;
+        @apply px-5;
+        @apply lg:px-40;
         @apply bg-[--yellow];
     }
 
@@ -32,13 +34,14 @@ body {
         @apply items-center;
     }
     .search-bar > img {
-        @apply h-9;
+        @apply h-[36px];
         @apply w-[53px];
     }
     .search-bar > form {
         @apply flex;
         @apply w-full;
-        @apply ml-8;
+        @apply ml-4;
+        @apply md:ml-8;
     }
     .search-bar > form > input {
         @apply w-full;
@@ -48,7 +51,8 @@ body {
         @apply focus:outline-none;
         @apply focus:ring-1;
         @apply focus:ring-[--black];
-        @apply text-lg;
+        @apply text-base;
+        @apply md:text-lg;
     }
     .search-bar > form > button {
         @apply px-4;
@@ -61,13 +65,17 @@ body {
         @apply focus:ring-[--black];
     }
     .search-bar > form > button > img {
-        @apply h-[18px];
-        @apply w-[18px];
+        @apply h-[16px];
+        @apply w-[16px];
+        @apply md:h-[18px];
+        @apply md:w-[18px];
     }
 
     main {
-        @apply py-4;
-        @apply px-80;
+        @apply pt-4;
+        @apply pb-9;
+        @apply px-5;
+        @apply lg:px-40;
     }
 
     .home-message {
@@ -78,12 +86,16 @@ body {
         @apply mt-2;
     }
     .home-message > h1 {
-        @apply text-2xl;
+        @apply text-lg;
+        @apply md:text-2xl;
         @apply text-[--gray];
+        @apply text-center;
+        @apply mt-2;
     }
 
     .breadcrumb {
-        @apply text-sm;
+        @apply text-xs;
+        @apply md:text-sm;
         @apply text-[--gray];
         @apply font-light;
         @apply w-full;
@@ -105,19 +117,21 @@ body {
     .products-list {
         @apply grid;
         @apply grid-rows-4;
-        @apply gap-2;
+        @apply md:gap-2;
         @apply rounded-sm;
         @apply bg-white p-2;
     }
 
     .products-list-item {
         @apply flex;
-        @apply flex-row;
+        @apply flex-col;
+        @apply md:flex-row;
         @apply hover:bg-[--background];
         @apply rounded-sm;
         @apply p-2;
     }
     .products-list-item > img {
+        @apply self-center;
         @apply h-[180px];
         @apply w-[180px];
         @apply rounded-sm;
@@ -125,24 +139,31 @@ body {
     }
     .products-list-item > .details {
         @apply grid;
-        @apply grid-cols-8;
+        @apply grid-rows-4;
+        @apply md:grid-cols-8;
         @apply justify-between;
         @apply w-full;
-        @apply p-4;
+        @apply p-3;
+        @apply md:p-4;
     }
     .products-list-item > .details > div {
-        @apply col-span-6;
+        @apply row-span-3;
+        @apply md:col-span-6;
     }
     .products-list-item > .details > p {
-        @apply col-span-2;
+        @apply row-span-1;
+        @apply md:col-span-2;
         @apply text-xs;
         @apply text-[--granite];
+        @apply mt-auto;
+        @apply md:mt-0;
     }
     .products-list-item > .details > div > .price {
         @apply flex;
         @apply flex-row;
         @apply items-center;
-        @apply mb-8;
+        @apply mb-4;
+        @apply md:mb-8;
     }
     .products-list-item > .details > div > .price > p {
         @apply text-2xl;
@@ -153,18 +174,24 @@ body {
         @apply ml-3;
     }
     .products-list-item > .details > div > h2 {
-        @apply text-lg;
+        @apply text-base;
+        @apply md:text-lg;
     }
 
     .product {
         @apply rounded-sm;
         @apply bg-white;
-        @apply p-8;
-        @apply grid;
-        @apply grid-cols-10;
+        @apply p-4;
+        @apply md:p-8;
+        @apply flex;
+        @apply flex-col-reverse;
+        @apply gap-8;
+        @apply md:gap-0;
+        @apply md:grid;
+        @apply md:grid-cols-10;
     }
     .product > .description {
-        @apply col-span-7;
+        @apply md:col-span-7;
     }
     .product > .description > img {
         @apply max-h-[680px];
@@ -172,39 +199,49 @@ body {
         @apply object-contain;
     }
     .product > .description > h2 {
-        @apply text-[28px];
-        @apply my-8;
+        @apply text-2xl;
+        @apply md:text-[28px];
+        @apply my-6;
+        @apply md:my-8;
     }
     .product > .description > p {
-        @apply text-base;
+        @apply text-sm;
+        @apply md:text-base;
         @apply text-[--gray];
         @apply font-light;
     }
     .product > .details {
-        @apply col-span-3;
+        @apply md:col-span-3;
     }
     .product > .details > p {
-        @apply text-sm;
+        @apply text-xs;
+        @apply md:text-sm;
         @apply mb-4;
         @apply font-light;
     }
     .product > .details > h1 {
-        @apply text-2xl;
+        @apply text-lg;
+        @apply md:text-2xl;
         @apply mb-8;
         @apply font-semibold;
     }
     .product > .details > .price {
         @apply flex;
         @apply flex-row;
+        @apply justify-center;
+        @apply md:justify-start;
         @apply mb-8;
     }
     .product > .details > .price > .amount {
-        @apply text-[46px];
+        @apply text-4xl;
+        @apply md:text-[46px];
     }
     .product > .details > .price > .decimals {
-        @apply text-2xl;
+        @apply text-xl;
+        @apply md:text-2xl;
         @apply relative;
-        @apply top-3;
+        @apply top-0.5;
+        @apply md:-top-0.5;
     }
 
     .button-primary {
@@ -215,7 +252,8 @@ body {
         @apply text-white;
         @apply rounded-sm;
         @apply py-2;
-        @apply text-lg;
+        @apply text-base;
+        @apply md:text-lg;
     }
 
     .spinner {
