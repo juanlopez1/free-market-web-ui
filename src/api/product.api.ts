@@ -8,10 +8,10 @@ import { httpGet } from '@free-market-web-ui/services/http.service';
 
 class ProductAPI {
     getById = ({ id }: GetProductByIdRequest): Promise<GetProductByIdResponse> =>
-        httpGet<GetProductByIdResponse>(`items/${id}`);
+        httpGet<GetProductByIdResponse>(`items/${encodeURIComponent(id)}`);
 
     searchByQuery = ({ query }: SearchProductsByQueryRequest): Promise<SearchProductsByQueryResponse> =>
-        httpGet<SearchProductsByQueryResponse>(`items?q=${query}`);
+        httpGet<SearchProductsByQueryResponse>(`items?q=${encodeURIComponent(query)}`);
 }
 
 const productAPI = new ProductAPI();

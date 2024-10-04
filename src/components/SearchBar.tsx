@@ -15,19 +15,16 @@ const SearchBar = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const search = searchParams.get('search');
-    const {
-        control,
-        handleSubmit,
-        formState: { isSubmitting },
-    } = useForm<FormValues>({ defaultValues: { query: search ?? '' } });
+    const { control, handleSubmit } = useForm<FormValues>({ defaultValues: { query: search ?? '' } });
 
-    const onSubmit: SubmitHandler<FormValues> = async ({ query }) => {
+    const onSubmit: SubmitHandler<FormValues> = ({ query }) => {
         const searchQuery = query.trim();
 
-        if (searchQuery === '') {
+        if (searchQuery === '' || searchQuery === search) {
             return;
         }
-        router.push(`/items?search=${query}`);
+        const encodedQuery = encodeURIComponent(searchQuery);
+        router.push(`/items?search=${encodedQuery}`);
     };
 
     return (
@@ -44,12 +41,11 @@ const SearchBar = () => {
                                 name={name}
                                 id={name}
                                 placeholder="Nunca dejes de buscar"
-                                disabled={isSubmitting}
                                 onChange={onChange}
                                 onBlur={onBlur}
                                 value={value}
                             />
-                            <button type="submit" disabled={isSubmitting}>
+                            <button type="submit">
                                 <Image src={searchIcon} alt="search-icon" width={18} height={18} />
                             </button>
                         </Fragment>
