@@ -14,9 +14,17 @@ const ProductsList = () => {
         />
     ) : (
         <div className="products-list">
-            {searchProducts?.map((product, index) => (
-                <ProductListItem key={product.id} product={product} showDivider={index + 1 < searchProducts.length} />
-            ))}
+            {searchProducts?.length === 0 ? (
+                <h1>No se encontraron resultados, probá buscando de otra manera</h1>
+            ) : (
+                searchProducts?.map((product, index) => (
+                    <ProductListItem
+                        key={product.id}
+                        product={product}
+                        showDivider={index + 1 < searchProducts.length}
+                    />
+                ))
+            )}
         </div>
     );
 };

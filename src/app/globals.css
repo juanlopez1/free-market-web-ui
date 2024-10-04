@@ -123,6 +123,13 @@ body {
         @apply rounded-sm;
         @apply bg-white p-2;
     }
+    .products-list > h1 {
+        @apply relative;
+        @apply top-12;
+        @apply text-lg;
+        @apply md:text-2xl;
+        @apply text-center;
+    }
 
     .products-list-item {
         @apply flex;
