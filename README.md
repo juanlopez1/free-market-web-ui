@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# free-market-web-ui
 
-## Getting Started
+La Next.js app que se sirve de [`free-market-api`](https://github.com/juanlopez1/free-market-api). Fue realizada para el code challenge de Front-End de Mercado Libre. Se encuentra online [aquí](https://free-market-web-ui-a360180d92b3.herokuapp.com).
 
-First, run the development server:
+## Instalación
+
+Para instalar las dependencias, ejecutá el siguiente comando:
+
+```bash
+npm install
+```
+
+## Scripts Disponibles
+
+### `dev`
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Inicia el servidor de desarrollo de Next.js. El endpoint que se utiliza es [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### `build`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Compila la aplicación Next.js para producción y genera la carpeta `.next` con los archivos compilados.
 
-To learn more about Next.js, take a look at the following resources:
+### `start`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Inicia la aplicación Next.js en modo producción utilizando los archivos compilados de la carpeta `.next`.
 
-## Deploy on Vercel
+### `lint`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ejecuta el linter de TypeScript para verificar errores de tipo y formatea el código utilizando Biome.
+
+### `test`
+
+```bash
+npm run test
+```
+
+Ejecuta los `tests` utilizando Jest y recopila la cobertura de las pruebas.
+
+### `test:watch`
+
+```bash
+npm run test:watch
+```
+
+Ejecuta los `tests` en modo "watch".
+
+### `postbuild`
+
+```bash
+npm run postbuild
+```
+
+Genera los sitemaps de la app utilizando `next-sitemap`. Este comando se ejecuta automáticamente después del comando `build`.
