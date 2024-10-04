@@ -5,7 +5,7 @@ import ProductPageContainer from '@free-market-web-ui/container/ProductPage.cont
 
 type ProductPageProps = {
     params: {
-        id: string;
+        id?: string;
     };
 };
 
