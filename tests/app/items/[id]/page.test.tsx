@@ -1,30 +1,34 @@
-// __tests__/ProductPage.test.tsx
-import { render } from '@testing-library/react';
 import { redirect } from 'next/navigation';
+import { render } from '@testing-library/react';
 
 import ProductPage from '@free-market-web-ui/app/items/[id]/page';
 import ProductPageContainer from '@free-market-web-ui/container/ProductPage.container';
-
-jest.mock('@free-market-web-ui/container/ProductPage.container', () => {
-    return jest.fn(() => <div>Product Details</div>);
-});
 
 jest.mock('next/navigation', () => ({
     redirect: jest.fn(),
 }));
 
-describe('ProductPage', () => {
-    it('redirects to home if no id param is provided', () => {
-        const params = { id: '' };
+jest.mock('@free-market-web-ui/container/ProductPage.container', () =>
+    jest.fn(() => <div>Mocked ProductPageContainer</div>),
+);
 
-        render(<ProductPage params={params} />);
+describe('ProductPage', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should call redirect if no id is provided', () => {
+        render(<ProductPage params={{}} />);
+
         expect(redirect).toHaveBeenCalledWith('/');
     });
 
-    it('renders ProductPageContainer if id param is provided', () => {
-        const params = { id: '123' };
+    it('should render ProductPageContainer if id is provided', () => {
+        const id = '123';
+        const { getByText } = render(<ProductPage params={{ id }} />);
 
-        render(<ProductPage params={params} />);
-        expect(ProductPageContainer).toHaveBeenCalledWith({ id: '123' }, {});
+        expect(redirect).not.toHaveBeenCalled();
+        expect(ProductPageContainer).toHaveBeenCalledWith({ id }, {});
+        expect(getByText('Mocked ProductPageContainer')).toBeInTheDocument();
     });
 });
